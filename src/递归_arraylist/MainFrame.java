@@ -1,4 +1,4 @@
-package µİ¹é_arraylist;
+package é€’å½’_arraylist;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -20,40 +20,40 @@ public class MainFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	static Scanner in = new Scanner(System.in);
-	private int num;//½âµÄ¸öÊı
-	private int n;//n»ÊºóµÄn
+	private int num;//ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½
+	private int n;//nï¿½Êºï¿½ï¿½n
 	private JFrame win;
 	private JLabel lab[][];
 	public  ImageIcon imageIcon;
 	public LinkedList resultlist1;
 	
 	public MainFrame(){
-		 win = new JFrame("µİ¹é_»ÊºóÆåÅÌ");
+		 win = new JFrame("ï¿½İ¹ï¿½_ï¿½Êºï¿½ï¿½ï¿½ï¿½ï¿½");
 		   lab =null;
 		   win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		   win.setSize(500, 500);
 		    win.setResizable(false);
 		    win.setLocation(200, 0);
 		    win.setVisible(true);
-		String s = JOptionPane.showInputDialog(win,"ÇëÊäÈën»ÊºóÎÊÌâµÄn£¡");
+		String s = JOptionPane.showInputDialog(win,"è¯·è¾“å…¥nçš„è§„æ¨¡ï¼š");
 		try {
 		     n = Integer.parseInt(s);
 		} catch (NumberFormatException e) {
 		    e.printStackTrace();
 		}
-		show();//ÏÔÊ¾ÆåÅÌ
-		//¿ªÊ¼¼ÆÊ±
+		show();//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+		//ï¿½ï¿½Ê¼ï¿½ï¿½Ê±
 		long begin = System.currentTimeMillis();
-		NQueen1 queen  = new NQueen1(n);//µİ¹é£¬ÓÃarraylist´¢´æ
-		//¼ÆÊ±½áÊø
+		NQueen1 queen  = new NQueen1(n);//ï¿½İ¹é£¬ï¿½ï¿½arraylistï¿½ï¿½ï¿½ï¿½
+		//ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
 		long end = System.currentTimeMillis();
 		
 		resultlist1 = queen.resultList;
 		ArrayList list = (ArrayList) resultlist1.getFirst();
 		n = list.size();
 		num= resultlist1.size();
-		JOptionPane.showMessageDialog(win,n+"»ÊºóµÄËùÓĞ½âÒÑ¾­¼ÆËãÍê±Ï£¬Ò»¹²ÓĞ¸ö"+num+"½â\nºÄÊ±"+(end-begin)+"ms");
-		String s1 = JOptionPane.showInputDialog(win,"ÇëÎÊÄãÏë²é¿´µÚ¼¸¸ö½â");
+		JOptionPane.showMessageDialog(win,n+"çš‡åé—®é¢˜å·²ç»å…¨éƒ¨æ±‚è§£å‡ºæ¥ï¼Œä¸€å…±æœ‰"+num+"ä¸ªè§£\nè€—æ—¶ï¼š"+(end-begin)+"ms");
+		String s1 = JOptionPane.showInputDialog(win,"è¯·é—®ä½ è¦æŸ¥çœ‹ç¬¬å‡ ä¸ªè§£ï¼Ÿ");
 		
 		new Thread(new Runnable(){
 			public void run(){
@@ -69,7 +69,7 @@ public class MainFrame extends JFrame {
 		}).start();
 		
 	}
-	public void show(){//ÏÔÊ¾ÆåÅÌ
+	public void show(){//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
 
 		win.setLayout(new GridLayout(n,n));
 		win.setSize(n*50, n*50);
@@ -80,7 +80,7 @@ public class MainFrame extends JFrame {
 			{
 				lab[i][j] = new JLabel();
 				lab[i][j].setHorizontalAlignment(JLabel.CENTER);
-				lab[i][j].setOpaque(true);//Í¸Ã÷
+				lab[i][j].setOpaque(true);//Í¸ï¿½ï¿½
 				if((i+j)%2==0){
 					lab[i][j].setBackground(Color.black);
 				}
@@ -93,7 +93,7 @@ public class MainFrame extends JFrame {
 			}
 		}
 	}
-	public void showNumber1(int x){//¶ÔÓ¦NQueen1
+	public void showNumber1(int x){//ï¿½ï¿½Ó¦NQueen1
 		ArrayList list = (ArrayList) resultlist1.get(x-1);
 			imageIcon = new ImageIcon("./image/queen.PNG");
 			for(int i=0;i<n;i++)
