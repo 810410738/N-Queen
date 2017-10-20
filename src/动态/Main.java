@@ -1,4 +1,4 @@
-package åŠ¨æ€;
+package ¶¯Ì¬;
 
 import java.awt.Color;  
 import java.awt.Font;  
@@ -13,14 +13,14 @@ import java.awt.*;
   
 public class Main {  
     JFrame frame;  
-    int n=15;            //ï¿½ï¿½ï¿½ï¿½ï¿½Ä£  
-    int waitTime=0;   //Ê±ï¿½ï¿½ï¿½ï¿½  
+    int n=15;            //ÎÊÌâ¹æÄ£  
+    int waitTime=0;   //Ê±¼ä¼ä¸ô  
     JLabel mp[][];  
     Thread thread;
     ImageIcon imageIcon ;
     public void create(){
     
-    	frame = new JFrame(String.valueOf(n)+"ï¿½Êºï¿½ï¿½ï¿½ï¿½ï¿½");
+    	frame = new JFrame(String.valueOf(n)+"»ÊºóÎÊÌâ");
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	frame.setSize(50*n, 50*n);
     	frame.setLayout(new GridLayout(n,n));
@@ -32,7 +32,7 @@ public class Main {
     	for(int i=0;i<n;i++){
     		for(int j=0;j<n;j++){
     			mp[i][j] = new JLabel();
-				mp[i][j].setOpaque(true);//Í¸ï¿½ï¿½
+				mp[i][j].setOpaque(true);//Í¸Ã÷
 				if((i+j)%2==0){
 					mp[i][j].setBackground(Color.black);
 				}
@@ -69,7 +69,7 @@ public class Main {
         if(row==n){
         	
             ans++;  
-            System.out.print("ï¿½ï¿½"+ans+"ï¿½Ö°Ú·ï¿½Îªï¿½ï¿½");  
+            System.out.print("µÚ"+ans+"ÖÖ°Ú·¨Îª£º");  
             //show
             for(int i=0;i<n;i++){  
                 System.out.print(vis[i]+",");  
@@ -77,7 +77,7 @@ public class Main {
             System.out.println();  
         
             //thread.sleep(3*waitTime);
-            JOptionPane.showMessageDialog(frame,"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½"+ans+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            JOptionPane.showMessageDialog(frame,"¹ş¹ş£¬ÕÒµ½µÚ"+ans+"½âÀ²£¡");
              
             return;  
         }  

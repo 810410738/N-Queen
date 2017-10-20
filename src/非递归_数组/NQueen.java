@@ -1,7 +1,7 @@
-package 闈為�掑綊_鏁扮粍;
+package 非递归_数组;
 
 /*
- * 锟角递归，一维锟斤拷锟介储锟斤拷
+ * 非递归，一维数组储存
  */
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -21,12 +21,12 @@ public class NQueen {
 	    int i;  
 	    for (i = 1; i < k; i++)  
 	    {  
-	        if (x[i] == x[k] || Math.abs(i - k) == Math.abs(x[i] - x[k])) //锟斤拷一锟斤拷锟叫讹拷锟叫诧拷锟斤拷锟斤拷同锟斤拷锟节讹拷锟斤拷锟叫断对斤拷锟竭诧拷锟斤拷锟斤拷同  
+	        if (x[i] == x[k] || Math.abs(i - k) == Math.abs(x[i] - x[k])) //第一个判断行不能相同，第二个判断对角线不能相同  
 	            return false;  
 	    }  
 	    return true;  
 	}  
-	public void backtrack2()//锟斤拷锟斤拷锟斤拷锟斤拷  
+	public void backtrack2()//迭代回溯  
 	{  
 		x = new int[EAGELENGTH+1];
 	    int i;
@@ -34,13 +34,13 @@ public class NQueen {
 	    int k=1;  
 	    while(k>0)  
 	    {  
-	        x[k]+=1;//锟斤拷前锟叫硷拷1锟斤拷位锟矫匡拷始锟斤拷锟斤拷  
-	        while((x[k]<=EAGELENGTH) && !place(k))//锟斤拷前锟斤拷位锟斤拷锟角凤拷锟斤拷锟斤拷锟斤拷锟斤拷  
-	            x[k]+=1;//锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷一锟斤拷位锟斤拷  
+	        x[k]+=1;//当前列加1的位置开始搜索  
+	        while((x[k]<=EAGELENGTH) && !place(k))//当前列位置是否满足条件  
+	            x[k]+=1;//不满足条件，继续搜索下一个位置  
 	  
-	        if(x[k]<=EAGELENGTH)//锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷  
+	        if(x[k]<=EAGELENGTH)//存在满足条件的列  
 	        {  
-	            if(k==EAGELENGTH)//锟斤拷锟斤拷锟揭伙拷锟斤拷屎锟斤拷锟斤拷锟斤拷锟斤拷  
+	            if(k==EAGELENGTH)//是最后一个皇后，完成搜索  
 	            {  
 	            	int xx[] = new int [EAGELENGTH+1];
 	            	for(int j=0;j<EAGELENGTH+1;j++)
@@ -48,13 +48,13 @@ public class NQueen {
 	            	resultList.add(xx);
 	  
 	            }  
-	            else//锟斤拷锟角ｏ拷锟斤拷锟斤拷锟斤拷一锟斤拷锟绞猴拷  
+	            else//不是，则处理下一个皇后  
 	            {  
 	                k++;  
 	                x[k]=0;  
 	            }  
 	        }  
-	        else//锟斤拷锟斤拷  
+	        else//回溯  
 	        {  
 	            k--;  
 	        }  

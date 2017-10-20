@@ -69,7 +69,7 @@ public class MainFrame extends JFrame {
 		}).start();
 		
 	}
-	public void show(){//显示棋盘
+	public void show(){//��ʾ����
 
 		win.setLayout(new GridLayout(n,n));
 		win.setSize(n*50, n*50);
