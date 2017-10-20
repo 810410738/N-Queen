@@ -1,7 +1,7 @@
-package µİ¹é_arraylist;
+package é€’å½’_arraylist;
 
 /*
- * µİ¹é£¬Ò»Î¬arraylist´¢´æ
+ * ï¿½İ¹é£¬Ò»Î¬arraylistï¿½ï¿½ï¿½ï¿½
  */
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -18,28 +18,29 @@ public class NQueen1 {
 		calculateQueens(list);
 	}
 	
-	public void calculateQueens(ArrayList<Integer> locationList) {//µİ¹é
+	public void calculateQueens(ArrayList<Integer> locationList) {//ï¿½İ¹ï¿½
 
-		if (locationList.size() == EAGELENGTH) {//ÒÑ¾­Âú×ãÁËÒ»ÖÖÇé¿ö
+		if (locationList.size() == EAGELENGTH) {//å·²ç»æ‰¾å®Œnè¡Œ
+			//ä¸ºä»€ä¹ˆè¿™æ ·è¦å¤åˆ¶æ‰å¯ä»¥ï¼Œç›´æ¥addåˆ°resultlistï¼Œé‡Œé¢çš„å†…å®¹ä¸ºç©ºï¼Ÿï¼Ÿ
 			ArrayList<Integer> locationListClone = new ArrayList<>();
 			locationListClone.addAll(locationList);
 			resultList.add(locationListClone);
 			return;
 		}
-		//iÊÇÁĞ£¬sizeÊÇĞĞ£¬jÒ²ÊÇĞĞ
+		//é€’å½’æ±‚è§£
 		for (Integer i = 0; i < EAGELENGTH; i++) {
-			if (!locationList.contains(i)) {//ÅĞ¶ÏÍ¬Ò»ÁĞ
+			if (!locationList.contains(i)) {//åŒä¸€åˆ—æ²¡æœ‰é‡å¤
 				boolean flag = true;
 				for (int j = 0; j < locationList.size() && flag; j++) {
-					//ÅĞ¶Ï¶Ô½ÇÏß
+					//å¯¹è§’çº¿é‡å¤äº†ï¼Œflag=false
 					if (Math.abs(i - locationList.get(j)) == Math.abs(locationList.size() - j))
 						flag = false;
 				}
 				if (flag) {
-					//¸ÃÎ»ÖÃ¿ÉÒÔ·Å»Êºó
+					//æ»¡è¶³æ‘†æ”¾æ¡ä»¶
 					locationList.add(i);
 					calculateQueens(locationList);
-					locationList.remove(locationList.size() - 1);//»ØËİ
+					locationList.remove(locationList.size() - 1);//å›æº¯
 				}
 			}
 		}
