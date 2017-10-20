@@ -26,7 +26,7 @@ public class NQueen {
 	    }  
 	    return true;  
 	}  
-	public void backtrack2()//��������  
+	public void backtrack2()
 	{  
 		x = new int[EAGELENGTH+1];
 	    int i;

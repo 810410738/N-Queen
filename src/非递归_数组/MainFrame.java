@@ -28,14 +28,14 @@ public class MainFrame extends JFrame {
 	public LinkedList resultlist1;
 	
 	public MainFrame(){
-		 win = new JFrame("�ǵݹ�_�ʺ�����");
+		 win = new JFrame("n皇后");
 		   lab =null;
 		   win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		   win.setSize(500, 500);
 		    win.setResizable(false);
 		    win.setLocation(200, 0);
 		    win.setVisible(true);
-		String s = JOptionPane.showInputDialog(win,"������n�ʺ������n��");
+		String s = JOptionPane.showInputDialog(win,"请输入n的规模：");
 		try {
 		     n = Integer.parseInt(s);
 		} catch (NumberFormatException e) {
@@ -54,8 +54,8 @@ public class MainFrame extends JFrame {
 				int list[] = (int [])resultlist1.getFirst();
 				n = list.length-1;
 				num= resultlist1.size();
-				JOptionPane.showMessageDialog(win,n+"�ʺ�����н��Ѿ�������ϣ�һ���и�"+num+"��\n��ʱ"+(end-begin)+"ms");
-				String s1 = JOptionPane.showInputDialog(win,"��������鿴�ڼ�����");
+				JOptionPane.showMessageDialog(win,n+"皇后问题已经全部求解完成，共有"+num+"个解\n耗时"+(end-begin)+"ms");
+				String s1 = JOptionPane.showInputDialog(win,"请问你要查看第几个解：");
 				int x = 0;
 				try {
 				      x = Integer.parseInt(s1);
@@ -98,6 +98,7 @@ public class MainFrame extends JFrame {
 		{
 			lab[i][list[i+1]-1] .setIcon(imageIcon);
 		}
+		
 	}
 
 	public static void main(String[] args) {
