@@ -7,9 +7,9 @@ import java.util.Scanner;
 public class nqueen_algorithm {
 	int n;
 	private int EAGELENGTH ;
-	public int x[] ;
+	public char x[] ;
 	public LinkedList<ArrayList<Integer>> resultList1 = new LinkedList<>();
-	public LinkedList<int []> resultList2 = new LinkedList<>();
+	public LinkedList<char []> resultList2 = new LinkedList<>();
 	public nqueen_algorithm(int n){
 		EAGELENGTH = n;
 		this.n = n;
@@ -50,13 +50,13 @@ public class nqueen_algorithm {
 		 }
 		 else if(select == 2){
 			 System.out.println("共找到"+resultList2.size()+"个解\n"+"分别是：\n");
-			 for(int i=0;i<resultList2.size();i++){
-				 System.out.print('[');
-				 for(int j=0;j<n;j++){
-					 System.out.print(resultList2.get(i)[j+1]-1+",");
-				 }
-				 System.out.println(']');
-			 }
+//			 for(int i=0;i<resultList2.size();i++){
+//				 System.out.print('[');
+//				 for(int j=0;j<n;j++){
+//					 System.out.print(resultList2.get(i)[j+1]-1+",");
+//				 }
+//				 System.out.println(']');
+//			 }
 		 }
 		 
 	 }
@@ -73,11 +73,11 @@ public class nqueen_algorithm {
 		}  
 		public void nqueen2()
 		{  
-			x = new int[EAGELENGTH+1];
+			x = new char[EAGELENGTH+1];
 		    int i;
 		    x[1]=0;  
 		    int k=1; 
-		    int xx[] = new int [EAGELENGTH+1];
+		    //int xx[] = new int [EAGELENGTH+1];
 		    while(k>0)  
 		    {  
 		        x[k]+=1;//  
@@ -88,7 +88,7 @@ public class nqueen_algorithm {
 		        {  
 		            if(k==EAGELENGTH)// 
 		            {  
-		            	//int xx[] = new int [EAGELENGTH+1];
+		            	char xx[] = new char [EAGELENGTH+1];
 		            	for(int j=0;j<EAGELENGTH+1;j++)
 		            		xx[j] = x[j];
 		            	resultList2.add(xx);
@@ -107,14 +107,14 @@ public class nqueen_algorithm {
 		  
 		    }  
 		}  
-	public void violence(){
-		x = new int[n];
-		int i= 0;
-		for(i=0;i<n;i++){
-			
-		}
-		
-	}
+//	public void violence(){
+//		x = new int[n];
+//		int i= 0;
+//		for(i=0;i<n;i++){
+//			
+//		}
+//		
+//	}
 	 public static void main(String[] args) {
 		int n;
 		Scanner scanner = new Scanner(System.in);

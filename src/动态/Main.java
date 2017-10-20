@@ -69,7 +69,7 @@ public class Main {
         if(row==n){
         	
             ans++;  
-            System.out.print("��"+ans+"�ְڷ�Ϊ��");  
+            System.out.print("已经找到第"+ans+"个解");  
             //show
             for(int i=0;i<n;i++){  
                 System.out.print(vis[i]+",");  
@@ -77,7 +77,7 @@ public class Main {
             System.out.println();  
         
             //thread.sleep(3*waitTime);
-            JOptionPane.showMessageDialog(frame,"�������ҵ���"+ans+"������");
+            JOptionPane.showMessageDialog(frame,"已经找到第"+ans+"个解");
              
             return;  
         }  
