@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class nqueen_algorithm {
 	int n;
-	double count;
-	double node_count;
+	long count;
+	long node_count;
 	private int EAGELENGTH ;
 	public char x[] ;
 	public LinkedList<ArrayList<Integer>> resultList1 = new LinkedList<>();
@@ -66,11 +66,15 @@ public class nqueen_algorithm {
 //				 System.out.println(']');
 //			 }
 		 }
+		 else if(select == 3){
+			 System.out.println("共找到"+count+"个解\n"+"节点数为:"+node_count+"\n");
+		 }
 		 
 	 }
 	
 	 public boolean place(int k)  
 		{  
+		 	node_count ++;
 		    int i;  
 		    for (i = 1; i < k; i++)  
 		    {  
@@ -90,14 +94,13 @@ public class nqueen_algorithm {
 		    //int xx[] = new int [EAGELENGTH+1];
 		    while(k>0)  
 		    {  
-		    	node_count ++;
 		        x[k]+=1;//  
-		        while((x[k]<=EAGELENGTH) && !place(k))//  
+		        while((x[k]<=EAGELENGTH) && !place(k))//遍历一行，不能放就遍历右边的一个，直接行末  
 		            x[k]+=1;// 
 		  
-		        if(x[k]<=EAGELENGTH)//  
+		        if(x[k]<=EAGELENGTH)//这一行找到符合条件的地方  
 		        {  
-		            if(k==EAGELENGTH)// 
+		            if(k==EAGELENGTH)//如果已经遍历所有行 
 		            {  
 //		            	char xx[] = new char [EAGELENGTH+1];
 //		            	for(int j=0;j<EAGELENGTH+1;j++)
@@ -107,27 +110,45 @@ public class nqueen_algorithm {
 		            	
 		  
 		            }  
-		            else//���ǣ�������һ���ʺ�  
+		            else//继续找下一行
 		            {  
 		                k++;  
 		                x[k]=0;  
 		            }  
 		        }  
-		        else//����  
+		        else//回溯
 		        {  
 		            k--;  
 		        }  
 		  
 		    }  
 		}  
-//	public void violence(){
-//		x = new int[n];
-//		int i= 0;
-//		for(i=0;i<n;i++){
-//			
-//		}
-//		
-//	}
+	public void judge(char x[]){
+		
+	}
+	public void violence(int j){
+		x = new char[n];
+		if(j>=n){
+			judge(x);
+			count++;
+		}
+		else{
+			int i=0;		
+			for(i=0;i<n;i++){//遍历一行
+				node_count++;
+				x[j] = (char)i;
+				violence(j+1);
+			}	
+		}
+		
+		
+	}
+	public void setCount(int x){
+		count = x;
+	}
+	public void setNodeCount(int x){
+		node_count = x;
+	}
 	 public static void main(String[] args) {
 		int n;
 		Scanner scanner = new Scanner(System.in);
@@ -138,18 +159,27 @@ public class nqueen_algorithm {
 		ArrayList<Integer> locationList = new ArrayList<>();
 		long begin,end;
 		//递归回溯法
-		begin = System.currentTimeMillis();
-		nqueen.nqueen1(locationList);
-		end = System.currentTimeMillis();
-		System.out.println("递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
-		nqueen.show(1);
+//		begin = System.currentTimeMillis();
+//		nqueen.nqueen1(locationList);
+//		end = System.currentTimeMillis();
+//		System.out.println("递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
+//		nqueen.show(1);
 		
 		//优化的非递归回溯法
+//		begin = System.currentTimeMillis();
+//		nqueen.nqueen2();
+//		end = System.currentTimeMillis();
+//		System.out.println("非递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
+//		nqueen.show(2);
+		
+		//蛮力法
+		nqueen.setCount(0);
+		nqueen.setNodeCount(0);
 		begin = System.currentTimeMillis();
-		nqueen.nqueen2();
+		nqueen.violence(0);
 		end = System.currentTimeMillis();
-		System.out.println("非递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
-		nqueen.show(2);
+		System.out.println("蛮力法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
+		nqueen.show(3);
 	}
 
  
