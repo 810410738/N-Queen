@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class nqueen_algorithm {
 	int n;
+	double count;
+	double node_count;
 	private int EAGELENGTH ;
 	public char x[] ;
 	public LinkedList<ArrayList<Integer>> resultList1 = new LinkedList<>();
@@ -13,6 +15,8 @@ public class nqueen_algorithm {
 	public nqueen_algorithm(int n){
 		EAGELENGTH = n;
 		this.n = n;
+		count = 0;
+		node_count = 0 ;
 	}
 	 void nqueen1(ArrayList<Integer> list) {		 
 		// TODO Auto-generated method stub
@@ -25,6 +29,7 @@ public class nqueen_algorithm {
 		}
 		//递归求解
 		for (Integer i = 0; i < n; i++) {
+			node_count++;
 			if (!list.contains(i)) {//同一列没有重复
 				boolean flag = true;
 				for (int j = 0; j < list.size() && flag; j++) {
@@ -37,6 +42,7 @@ public class nqueen_algorithm {
 					list.add(i);
 					nqueen1(list);
 					list.remove(list.size() - 1);//回溯
+					count++;
 				}
 			}
 		}
@@ -46,10 +52,12 @@ public class nqueen_algorithm {
 	 void show(int select)
 	 {
 		 if(select == 1){
-			 System.out.println("共找到"+resultList1.size()+"个解\n"+"分别是：\n"+resultList1);	 
+			 //System.out.println("共找到"+resultList1.size()+"个解\n"+"分别是：\n"+resultList1);	 
+			 System.out.println("共找到"+count+"个解\n"+"节点数为:"+node_count+"\n");
 		 }
 		 else if(select == 2){
-			 System.out.println("共找到"+resultList2.size()+"个解\n"+"分别是：\n");
+			 //System.out.println("共找到"+resultList2.size()+"个解\n"+"分别是：\n");
+			 System.out.println("共找到"+count+"个解\n"+"节点数为:"+node_count+"\n");
 //			 for(int i=0;i<resultList2.size();i++){
 //				 System.out.print('[');
 //				 for(int j=0;j<n;j++){
@@ -73,6 +81,8 @@ public class nqueen_algorithm {
 		}  
 		public void nqueen2()
 		{  
+			node_count = 0;
+			count = 0;
 			x = new char[EAGELENGTH+1];
 		    int i;
 		    x[1]=0;  
@@ -80,6 +90,7 @@ public class nqueen_algorithm {
 		    //int xx[] = new int [EAGELENGTH+1];
 		    while(k>0)  
 		    {  
+		    	node_count ++;
 		        x[k]+=1;//  
 		        while((x[k]<=EAGELENGTH) && !place(k))//  
 		            x[k]+=1;// 
@@ -88,10 +99,12 @@ public class nqueen_algorithm {
 		        {  
 		            if(k==EAGELENGTH)// 
 		            {  
-		            	char xx[] = new char [EAGELENGTH+1];
-		            	for(int j=0;j<EAGELENGTH+1;j++)
-		            		xx[j] = x[j];
-		            	resultList2.add(xx);
+//		            	char xx[] = new char [EAGELENGTH+1];
+//		            	for(int j=0;j<EAGELENGTH+1;j++)
+//		            		xx[j] = x[j];
+		            	//resultList2.add(xx);
+		            	count++;//计数器
+		            	
 		  
 		            }  
 		            else//���ǣ�������һ���ʺ�  
@@ -125,11 +138,11 @@ public class nqueen_algorithm {
 		ArrayList<Integer> locationList = new ArrayList<>();
 		long begin,end;
 		//递归回溯法
-//		begin = System.currentTimeMillis();
-//		nqueen.nqueen1(locationList);
-//		end = System.currentTimeMillis();
-//		System.out.println("递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
-//		nqueen.show(1);
+		begin = System.currentTimeMillis();
+		nqueen.nqueen1(locationList);
+		end = System.currentTimeMillis();
+		System.out.println("递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
+		nqueen.show(1);
 		
 		//优化的非递归回溯法
 		begin = System.currentTimeMillis();
