@@ -181,11 +181,11 @@ public class nqueen_algorithm {
 		ArrayList<Integer> locationList = new ArrayList<>();
 		long begin,end;
 		//递归回溯法
-		begin = System.currentTimeMillis();
-		nqueen.nqueen1(locationList);
-		end = System.currentTimeMillis();
-		System.out.println("递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
-		nqueen.show(1);
+//		begin = System.currentTimeMillis();
+//		nqueen.nqueen1(locationList);
+//		end = System.currentTimeMillis();
+//		System.out.println("递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
+//		nqueen.show(1);
 		
 		//优化的非递归回溯法
 		begin = System.currentTimeMillis();
