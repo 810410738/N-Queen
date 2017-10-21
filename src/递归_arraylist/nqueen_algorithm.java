@@ -9,14 +9,15 @@ public class nqueen_algorithm {
 	long count;
 	long node_count;
 	private int EAGELENGTH ;
-	public char x[] ;
+	public int x[] ;
 	public LinkedList<ArrayList<Integer>> resultList1 = new LinkedList<>();
-	public LinkedList<char []> resultList2 = new LinkedList<>();
+	public LinkedList<int []> resultList2 = new LinkedList<>();
 	public nqueen_algorithm(int n){
 		EAGELENGTH = n;
 		this.n = n;
 		count = 0;
 		node_count = 0 ;
+		x = new int[EAGELENGTH+1];
 	}
 	 void nqueen1(ArrayList<Integer> list) {		 
 		// TODO Auto-generated method stub
@@ -87,7 +88,7 @@ public class nqueen_algorithm {
 		{  
 			node_count = 0;
 			count = 0;
-			x = new char[EAGELENGTH+1];
+//			x = new int[EAGELENGTH+1];
 		    int i;
 		    x[1]=0;  
 		    int k=1; 
@@ -102,10 +103,10 @@ public class nqueen_algorithm {
 		        {  
 		            if(k==EAGELENGTH)//如果已经遍历所有行 
 		            {  
-//		            	char xx[] = new char [EAGELENGTH+1];
-//		            	for(int j=0;j<EAGELENGTH+1;j++)
-//		            		xx[j] = x[j];
-		            	//resultList2.add(xx);
+		            	int xx[] = new int [EAGELENGTH+1];
+		            	for(int j=0;j<EAGELENGTH+1;j++)
+		            		xx[j] = x[j];
+		            	resultList2.add(xx);
 		            	count++;//计数器
 		            	
 		  
@@ -123,20 +124,41 @@ public class nqueen_algorithm {
 		  
 		    }  
 		}  
-	public void judge(char x[]){
-		
+	public boolean judge(int x[]){
+		int i,j;
+		int count = 0;
+		for(i=0;i<n;i++){
+			count = 0;
+			//判断列重复
+			for(j=i+1;j<n;j++){
+				count ++;
+				if(x[i] == x[j]){
+					return false;
+				}
+				if(x[i]+count == x[j]||x[i]-count == x[j]){
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 	public void violence(int j){
-		x = new char[n];
+		boolean flag = true;
 		if(j>=n){
-			judge(x);
-			count++;
+			flag = judge(x);
+			if(flag){
+				count++;
+//				for(int i=0;i<n;i++){
+//					System.out.print(x[i]+",");
+//				}
+//				System.out.println();
+			}
 		}
 		else{
 			int i=0;		
 			for(i=0;i<n;i++){//遍历一行
 				node_count++;
-				x[j] = (char)i;
+				x[j] = i;
 				violence(j+1);
 			}	
 		}
@@ -159,18 +181,18 @@ public class nqueen_algorithm {
 		ArrayList<Integer> locationList = new ArrayList<>();
 		long begin,end;
 		//递归回溯法
-//		begin = System.currentTimeMillis();
-//		nqueen.nqueen1(locationList);
-//		end = System.currentTimeMillis();
-//		System.out.println("递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
-//		nqueen.show(1);
+		begin = System.currentTimeMillis();
+		nqueen.nqueen1(locationList);
+		end = System.currentTimeMillis();
+		System.out.println("递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
+		nqueen.show(1);
 		
 		//优化的非递归回溯法
-//		begin = System.currentTimeMillis();
-//		nqueen.nqueen2();
-//		end = System.currentTimeMillis();
-//		System.out.println("非递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
-//		nqueen.show(2);
+		begin = System.currentTimeMillis();
+		nqueen.nqueen2();
+		end = System.currentTimeMillis();
+		System.out.println("非递归法求"+n+"皇后问题已经全部求解完成！\n"+"耗时："+(end-begin)+"ms\n");
+		nqueen.show(2);
 		
 		//蛮力法
 		nqueen.setCount(0);
