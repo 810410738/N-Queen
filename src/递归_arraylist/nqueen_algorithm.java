@@ -22,9 +22,10 @@ public class nqueen_algorithm {
 		// TODO Auto-generated method stub
 		if (list.size() == n) {//已经找完n行
 			//为什么这样要复制才可以，直接add到resultList1，里面的内容为空？？
-			ArrayList<Integer> ListClone = new ArrayList<>();
-			ListClone.addAll(list);
-			resultList1.add(ListClone);
+//			ArrayList<Integer> ListClone = new ArrayList<>();
+//			ListClone.addAll(list);
+//			resultList1.add(ListClone);
+			count++;
 			return;
 		}
 		//递归求解
@@ -42,7 +43,6 @@ public class nqueen_algorithm {
 					list.add(i);
 					nqueen1(list);
 					list.remove(list.size() - 1);//回溯
-					count++;
 				}
 			}
 		}
